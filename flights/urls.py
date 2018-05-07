@@ -1,10 +1,18 @@
 from django.conf.urls import url
+from django.urls import re_path, include
 from . import views
+from . import models
+from . import tables
+from . import filters
 
 urlpatterns = [
-    # url(r'^$', views.passengers_list, name='passengers_list'),
-    url(r'^$', views.FilteredFlightListView.as_view(), name='flights_list'),
-    url('flight/(\d+)/', views.flights_detail, name='flights_detail')
-    # url(r'^airport/(?P<pk>\w+)/$', views.airports_list, name='airports_list'),
-    # url('^flight/(?P<pk>\d+)/$', views.flights_detail, name='flight_detail')
+    # url(r'^$', views.FilteredFlightListView.as_view(), name='flights_list'),
+    url('flight/(\d+)/', views.flights_detail, name='flights_detail'),
+    re_path(r'^auth/', include('django.contrib.auth.urls')),
+    url(r'^$', views.FilteredSingleTableView.as_view(
+            model=models.Flight,
+            table_class=tables.FlightTable,
+            template_name='flights/flights_list.html',
+            filter_class=filters.FlightFilter,
+        ), name='flights_list'),
 ]

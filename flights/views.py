@@ -1,10 +1,24 @@
 from django.shortcuts import render
-from .models import Passenger, Flight, Airport, Airplane, Customer
+from .models import Passenger, Flight
+from .forms import PassengerForm
 from .tables import FlightTable
-from .filters import FlightFilter
-from django_filters.views import FilterView
-from django_tables2.views import SingleTableMixin
+from django.db.models.functions import Cast
+from django.db.models.fields import DateField
 from django_tables2 import RequestConfig
+import django_tables2
+
+
+class FilteredSingleTableView(django_tables2.SingleTableView):
+    filter_class = None
+
+    def get_table_data(self):
+        self.filter = self.filter_class(self.request.GET, queryset=super(FilteredSingleTableView, self).get_table_data() )
+        return self.filter.qs
+
+    def get_context_data(self, **kwargs):
+        context = super(FilteredSingleTableView, self).get_context_data(**kwargs)
+        context['filter'] = self.filter
+        return context
 
 
 def passengers_list(request):
@@ -12,27 +26,32 @@ def passengers_list(request):
         return render(request, 'flights/passengers_list.html', {'passengers': passengers})
 
 
-
 def flights_list(request):
     table = FlightTable(Flight.objects.all())
+    table.objects.annotate(date_only=Cast('date', DateField()))
     RequestConfig(request).configure(table)
-    return render(request, 'flights/flights_list.html', {'table': FilteredFlightListView})
+    return render(request, 'flights/flights_list.html', {'table': FilteredSingleTableView})
 
 
 def flights_detail(request, pk):
     flight = Flight.objects.get(pk=pk)
-    return render(request, 'flights/flights_detail.html', {'flight': flight})
+    error = False
+    if request.method == "POST":
+        form = PassengerForm(request.POST)
+        if form.is_valid():
+            passenger = form.save(commit=False)
+            if flight.airplane.capacity >= flight.ticketsPurchased + passenger.nrOfTickets:
+                passenger.save()
+                flight.passengers.add(passenger)
+                flight.add_tickets(passenger.nrOfTickets)
+            else:
+                error = True
+    else:
+        form = PassengerForm()
+    return render(request, 'flights/flights_detail.html', {'flight': flight, 'pk': pk, 'form': form, 'error': error})
 
 
-class FilteredFlightListView(SingleTableMixin, FilterView):
-    table_class = FlightTable
-    model = Flight
-    template_name = 'flights/flights_list.html'
-    ordering = ['startingTime']
-    filterset_class = FlightFilter
+def flights_auth(request):
+    context = {}
+    return render(request, 'flights/templates/flights/registration/login.html', context)
 
-
-
-def airports_list(request):
-    airports = Airport.objects.all().order_by('name')
-    return render(request, 'flights/airports_list.html', {'airports': airports})

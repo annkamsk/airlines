@@ -1,4 +1,25 @@
 {%  extends 'flights/base.html' %}
-{% block table %}
-    <h1>{{ flight.startingTime }}</h1>
+{% block content %}
+    Airplane: {{ flight.airplane }}
+    <h2> {{ flight.startingAirport }} - {{ flight.landingAirport }}</h2>
+    {{ flight.startingTime }} - {{ flight.landingTime }}
+    <h2>Passengers:</h2>
+    {%  for pass in flight.passengerslist %}
+        <p>{{ pass }}</p>
+    {%  endfor %}
 {% endblock %}
+{% block sidebar %}
+    {% if error %}
+        <p>Sorry, there aren't enough places for this flight.</p>
+    {%  endif %}
+    <h2>Buy ticket!</h2>
+    <form method="POST" class="post-form">{% csrf_token %}
+        {{ form.as_p }}
+    {% if user.is_authenticated %}
+        <button type="submit" class="save btn btn-default">Save</button>
+    {%  else %}
+        <p>Log in so you can purchase your tickets.</p>
+        <a href="{% url 'login' %}">login</a>
+    {%  endif %}
+    </form>
+{%  endblock %}

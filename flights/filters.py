@@ -1,6 +1,10 @@
-import django_filters as df
 from .models import Flight
+import django_filters
 
-class FlightFilter(df.FilterSet):
+
+class FlightFilter(django_filters.FilterSet):
+
     class Meta:
-        fields = Flight
+        model = Flight
+        exclude = ('airplane', 'startingTime', 'landingTime', 'ticketsPurchased', 'passengers')
+

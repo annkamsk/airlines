@@ -1,5 +1,12 @@
 body {
     padding-left: 15px;
+    height: 100%;
+    font-family: "Bitstream Vera Sans Mono", Monaco, "Courier New", Courier, monospace;
+
+}
+
+html, body {
+    height: 100%;
 }
 
 
@@ -9,7 +16,7 @@ h1 {
 }
 
 .page-header {
-    background-color: #ff9400;
+    background-color: #F9EE59;
     margin-top: 0;
     padding: 20px 20px 20px 40px;
 }
@@ -20,9 +27,25 @@ h1 {
     text-decoration: none;
 }
 
-.content {
-    margin-left: 40px;
+
+.row {
+    height:100vh;
 }
+
+.col-sm-2 {
+    background: #254bed;
+    height: 100vh;
+    font-family: "Bitstream Vera Sans Mono", Monaco, "Courier New", Courier, monospace;
+    color: white;
+}
+
+footer {
+    background: #d8d8d8;
+    color: white;
+    font-variant-caps: all-small-caps;
+    text-align: center;
+}
+
 
 h1, h2, h3, h4 {
     font-family: 'Lobster', cursive;
