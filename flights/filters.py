@@ -6,5 +6,5 @@ class FlightFilter(django_filters.FilterSet):
 
     class Meta:
         model = Flight
-        exclude = ('airplane', 'startingTime', 'landingTime', 'ticketsPurchased', 'passengers')
+        exclude = ('airplane', 'ticketsPurchased', 'passengers')
 

@@ -4,7 +4,7 @@ from .views import *
 
 
 class FlightTable(tables.Table):
-    Choose = tables.LinkColumn('flights_detail', args=[A('pk')], orderable=False, empty_values=())
+    Choose = tables.LinkColumn('flights_detail', text='Choose', args=[A('pk')], orderable=False, empty_values=())
 
     class Meta:
         model = Flight

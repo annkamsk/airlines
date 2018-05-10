@@ -48,7 +48,9 @@ def flights_detail(request, pk):
                 error = True
     else:
         form = PassengerForm()
-    return render(request, 'flights/flights_detail.html', {'flight': flight, 'pk': pk, 'form': form, 'error': error})
+    tickets = flight.airplane.capacity - flight.ticketsPurchased
+    return render(request, 'flights/flights_detail.html', {'flight': flight, 'pk': pk, 'form': form, 'error': error,
+                                                           'tickets': tickets})
 
 
 def flights_auth(request):

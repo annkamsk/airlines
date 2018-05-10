@@ -6,7 +6,6 @@ from . import tables
 from . import filters
 
 urlpatterns = [
-    # url(r'^$', views.FilteredFlightListView.as_view(), name='flights_list'),
     url('flight/(\d+)/', views.flights_detail, name='flights_detail'),
     re_path(r'^auth/', include('django.contrib.auth.urls')),
     url(r'^$', views.FilteredSingleTableView.as_view(

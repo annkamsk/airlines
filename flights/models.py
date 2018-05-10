@@ -30,11 +30,9 @@ class Passenger(models.Model):
 
 class Flight(models.Model):
     startingAirport = models.ForeignKey(Airport, related_name='%(class)s_startingAirport', on_delete=models.CASCADE)
-    startingDate = models.DateField(default=timezone.now)
-    startingTime = models.TimeField(default=timezone.now)
+    startingTime = models.DateTimeField(default=timezone.now)
     landingAirport = models.ForeignKey(Airport, related_name='%(class)s_landingAirport', on_delete=models.CASCADE)
-    landingDate  = models.DateField(default=timezone.now)
-    landingTime = models.TimeField(default=timezone.now)
+    landingTime = models.DateTimeField(default=timezone.now)
     airplane = models.ForeignKey(Airplane, on_delete=models.CASCADE)
     passengers = models.ManyToManyField(Passenger)
     ticketsPurchased = models.IntegerField(default=0)

@@ -3,6 +3,7 @@
 {% load bootstrap3 %}
 {% if filter %}
     {% block sidebar %}
+
     <form action="" method="get" class="form form-horizontal">
         {% bootstrap_form filter.form layout='inline' %}
         {% bootstrap_button 'filter' %}

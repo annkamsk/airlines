@@ -1,7 +1,7 @@
 body {
-    padding-left: 15px;
     height: 100%;
     font-family: "Bitstream Vera Sans Mono", Monaco, "Courier New", Courier, monospace;
+    background: #d3d3d3;
 
 }
 
@@ -11,8 +11,8 @@ html, body {
 
 
 h1 {
-    color: #FCA205;
-    font-family: 'Lobster';
+    color: #ffffff;
+    font-family: "Helvetica";
 }
 
 .page-header {
@@ -29,18 +29,25 @@ h1 {
 
 
 .row {
-    height:100vh;
+}
+
+.table td{
+    background: white;
+}
+
+.table tr {
+    background: #393939;
 }
 
 .col-sm-2 {
-    background: #254bed;
+    background: #393939;
     height: 100vh;
     font-family: "Bitstream Vera Sans Mono", Monaco, "Courier New", Courier, monospace;
     color: white;
 }
 
 footer {
-    background: #d8d8d8;
+    background: #393939;
     color: white;
     font-variant-caps: all-small-caps;
     text-align: center;
@@ -48,7 +55,8 @@ footer {
 
 
 h1, h2, h3, h4 {
-    font-family: 'Lobster', cursive;
+    font-family: 'Helvetica';
+    font-variant: all-small-caps;
 }
 
 .date {
@@ -61,6 +69,7 @@ h1, h2, h3, h4 {
 
 .post-form textarea, .post-form input {
     width: 100%;
+    color: #393939;
 }
 
 .top-menu, .top-menu:hover, .top-menu:visited {

@@ -1,6 +1,7 @@
 {%  extends 'flights/base.html' %}
 {% block content %}
-    Airplane: {{ flight.airplane }}
+    <h3>Airplane: {{ flight.airplane }}</h3>
+    <h4> Tickets left: {{ tickets }} </h4>
     <h2> {{ flight.startingAirport }} - {{ flight.landingAirport }}</h2>
     {{ flight.startingTime }} - {{ flight.landingTime }}
     <h2>Passengers:</h2>
@@ -12,7 +13,7 @@
     {% if error %}
         <p>Sorry, there aren't enough places for this flight.</p>
     {%  endif %}
-    <h2>Buy ticket!</h2>
+    <h3>Buy ticket!</h3>
     <form method="POST" class="post-form">{% csrf_token %}
         {{ form.as_p }}
     {% if user.is_authenticated %}
