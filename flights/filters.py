@@ -8,3 +8,4 @@ class FlightFilter(django_filters.FilterSet):
         model = Flight
         exclude = ('airplane', 'ticketsPurchased', 'passengers')
 
+

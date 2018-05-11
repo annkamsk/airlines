@@ -9,6 +9,6 @@ class FlightTable(tables.Table):
     class Meta:
         model = Flight
         template_name = 'django_tables2/bootstrap.html'
-        exclude = ('ticketsPurchased', 'airplane', 'id')
+        exclude = ('ticketsPurchased', 'id')
 
 

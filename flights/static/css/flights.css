@@ -15,6 +15,11 @@ h1 {
     font-family: "Helvetica";
 }
 
+.post-form {
+    color: #d3d3d3;
+}
+
+
 .page-header {
     background-color: #F9EE59;
     margin-top: 0;
@@ -41,7 +46,7 @@ h1 {
 
 .col-sm-2 {
     background: #393939;
-    height: 100vh;
+    padding: 10px;
     font-family: "Bitstream Vera Sans Mono", Monaco, "Courier New", Courier, monospace;
     color: white;
 }

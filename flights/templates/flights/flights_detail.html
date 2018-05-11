@@ -6,13 +6,16 @@
     {{ flight.startingTime }} - {{ flight.landingTime }}
     <h2>Passengers:</h2>
     {%  for pass in flight.passengerslist %}
-        <p>{{ pass }}</p>
+        <p>{{ pass }} {{ pass.nrOfTickets }}</p>
     {%  endfor %}
 {% endblock %}
 {% block sidebar %}
     {% if error %}
         <p>Sorry, there aren't enough places for this flight.</p>
     {%  endif %}
+    {% if errorname %}
+        <p>Write your name and surname correctly.</p>
+    {% endif %}
     <h3>Buy ticket!</h3>
     <form method="POST" class="post-form">{% csrf_token %}
         {{ form.as_p }}

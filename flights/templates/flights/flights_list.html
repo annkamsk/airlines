@@ -1,17 +1,18 @@
 {% extends 'flights/base.html' %}
 {% load render_table from django_tables2 %}
-{% load bootstrap3 %}
-{% if filter %}
-    {% block sidebar %}
 
-    <form action="" method="get" class="form form-horizontal">
-        {% bootstrap_form filter.form layout='inline' %}
-        {% bootstrap_button 'filter' %}
+{% block sidebar %}
+    <form method="GET" class="post-form">
+        {{ form }}
+        <button type="submit" class="save btn btn-default">Search</button>
     </form>
-    {%  endblock %}
-{% endif %}
+{% endblock %}
+{% block content %}
+
 {% block table %}
     {% render_table table 'django_tables2/bootstrap.html' %}
 {% endblock %}
+{%  endblock %}
+
 
 
