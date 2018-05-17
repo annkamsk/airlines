@@ -15,20 +15,34 @@
 <body>
 
 <div class="container-fluid">
-
     <div class="row">
-        <div class="col-sm-2">
+        <div class="page-header">
+            <p>
+                <p style="float: left;">
+                <img src="{% static 'airplane.png' %}" class="header-image" height="50px" width="50px" border="1px">
+                </p>
+                <h1><a href="{% url 'flights_list' %}" class="header-title">Airanna Airlines</a></h1>
+            <p class="login" style="float:right;">
             {% block logout %}
                 {% if user.is_authenticated %}
                     Hi {{ user.username }}!
-                    <p><a href="{% url 'logout' %}">logout</a></p>
+                    <a href="{% url 'logout' %}">logout</a></p>
+                {% else %}
+                    Hi Stranger!
+                    <a href="{% url 'login' %}">login</a></p>
                 {% endif %}
             {% endblock %}
-            <h1><a href="{% url 'flights_list' %}">Airanna Airlines</a></h1>
-            {% block sidebar %}
+        </div>
+    </div>
+    <div class="row">
+        <div class="filter">
+            {% block filter %}
             {% endblock %}
         </div>
-        <div class="col-sm-10 ">
+
+    </div>
+    <div class="row">
+        <div class="flights">
             {% block content %}
                 {% block table %}
                 {% endblock %}

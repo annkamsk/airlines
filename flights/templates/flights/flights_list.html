@@ -1,16 +1,51 @@
 {% extends 'flights/base.html' %}
 {% load render_table from django_tables2 %}
 
-{% block sidebar %}
+
+{% block filter %}
     <form method="GET" class="post-form">
-        {{ form }}
+        <label for=startingAirport">Starting airport:</label>
+        <select name="startingAirport">
+            <option value="" selected disabled hidden>Choose here</option>
+            {%  for air in airports %}
+                <option value="{{ air.id }}"> {{ air }}</option>
+            {%  endfor %}
+        </select>
+        <label for=landingAirport">Landing airport:</label>
+        <select name="landingAirport">
+            <option value="" selected disabled hidden>Choose here</option>
+
+            {%  for air in airports %}
+                <option value="{{ air.id }}"> {{ air }}</option>
+            {%  endfor %}
+        </select>
+        <input type="date" name="fromDateStart" style="width: 10em;">
+        <input type="date" name="toDateStart" style="width: 10em;">
         <button type="submit" class="save btn btn-default">Search</button>
     </form>
 {% endblock %}
 {% block content %}
 
 {% block table %}
-    {% render_table table 'django_tables2/bootstrap.html' %}
+    <table class="data">
+        <tr>
+            <th>Starting Airport</th>
+            <th>Starting Time</th>
+            <th>Landing Airport</th>
+            <th>Landing Time</th>
+            <th>Airplane</th>
+        </tr>
+        {%  for row in table %}
+            <tr class="trLink">
+                <td><a href="{% url 'flights_detail' row.id %}">{{ row.startingAirport }}</a></td>
+                <td><a href="{% url 'flights_detail' row.id %}">{{ row.startingTime }}</a></td>
+                <td><a href="{% url 'flights_detail' row.id %}">{{ row.landingAirport }}</a></td>
+                <td><a href="{% url 'flights_detail' row.id %}">{{ row.landingTime }}</a></td>
+                <td><a href="{% url 'flights_detail' row.id %}">{{ row.airplane }}</a></td>
+            </tr>
+        {%  endfor %}
+
+    </table>
 {% endblock %}
 {%  endblock %}
 

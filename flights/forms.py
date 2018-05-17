@@ -1,8 +1,5 @@
 from django import forms
-from django.forms import DateInput
-
-from .models import Passenger, Flight
-from datetime import datetime
+from .models import Passenger, Flight, Airport
 
 
 class PassengerForm(forms.ModelForm):
@@ -13,18 +10,18 @@ class PassengerForm(forms.ModelForm):
 
 
 class FlightForm(forms.ModelForm):
-    fromDateStart = forms.DateTimeField(label='start from date: YYYY-MM-DD',
-                                         required=False)
-    toDateStart = forms.DateTimeField(label='start to date: YYYY-MM-DD',required=False)
-    fromDateLand = forms.DateTimeField(label='landing from date: YYYY-MM-DD',
-                                        required=False)
-    toDateLand = forms.DateTimeField(label='landing to date: YYYY-MM-DD',
-                                      required=False)
+    startingAirport = forms.ModelChoiceField(label='starting airport', required=False,
+                                             queryset=Airport.objects.all(), empty_label=None
+                                             )
+    landingAirport = forms.ModelChoiceField(label='landing airport', required=False,
+                                            queryset=Airport.objects.all())
+    fromDateStart = forms.DateTimeField(label='start from date:', required=False,
+                                        widget=forms.widgets.SelectDateWidget)
+    toDateStart = forms.DateTimeField(label='start to date:', required=False,
+                                      widget=forms.widgets.SelectDateWidget)
 
     class Meta:
         model = Flight
-        fields = ('startingAirport', 'landingAirport')
-        widgets = {
+        fields = ()
 
-        }
 

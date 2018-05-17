@@ -1,12 +1,7 @@
 body {
-    height: 100%;
     font-family: "Bitstream Vera Sans Mono", Monaco, "Courier New", Courier, monospace;
     background: #d3d3d3;
 
-}
-
-html, body {
-    height: 100%;
 }
 
 
@@ -19,10 +14,30 @@ h1 {
     color: #d3d3d3;
 }
 
+.header-image {
+    width:50px;
+    height:50px;
+}
+
+ select {
+    width: 20%;
+    padding: 8px 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #f1f1f1;
+}
+
+ .login {
+     color:#f1f1f1;
+     font-variant: all-small-caps;
+     font-weight: bolder;
+ }
+
 
 .page-header {
-    background-color: #F9EE59;
+    background-color: #393939;
     margin-top: 0;
+    margin-bottom: 0;
     padding: 20px 20px 20px 40px;
 }
 
@@ -36,20 +51,54 @@ h1 {
 .row {
 }
 
-.table td{
+.data {
+    border-collapse: collapse;
+    font-variant: all-small-caps;
+    width: 100%;
+    font-size: 16px;
+
+}
+
+tr.trLink a{
+    display: block;
+    height: 100%;
+    width: 100%;
+    padding:5px;
+}
+tr.trLink:hover a{
+    background: cornflowerblue;
+    text-decoration: none;
+    color: white;
+}
+
+.data td {
     background: white;
+    box-sizing: border-box;
+    padding-bottom: 5px;
+    padding-top: 5px;
 }
 
-.table tr {
+.data th  {
+    padding: 5px;
+    background: aliceblue;
+}
+
+.data tr {
     background: #393939;
+    border-bottom: 1px solid #ddd;
 }
 
-.col-sm-2 {
+.data tr:hover{
+    background-color: aliceblue;
+}
+
+.filter {
     background: #393939;
     padding: 10px;
     font-family: "Bitstream Vera Sans Mono", Monaco, "Courier New", Courier, monospace;
     color: white;
 }
+
 
 footer {
     background: #393939;
@@ -84,10 +133,6 @@ h1, h2, h3, h4 {
     margin-right: 20px;
 }
 
-.passengers {
-    margin-bottom: 70px;
-}
-
-.passengers h1 a, .passengers h1 a:visited {
-    color: #000000;
+.details {
+    padding: 10px;
 }

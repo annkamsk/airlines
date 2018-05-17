@@ -1,15 +1,17 @@
 {%  extends 'flights/base.html' %}
 {% block content %}
-    <h3>Airplane: {{ flight.airplane }}</h3>
-    <h4> Tickets left: {{ tickets }} </h4>
-    <h2> {{ flight.startingAirport }} - {{ flight.landingAirport }}</h2>
-    {{ flight.startingTime }} - {{ flight.landingTime }}
-    <h2>Passengers:</h2>
-    {%  for pass in flight.passengerslist %}
-        <p>{{ pass }} {{ pass.nrOfTickets }}</p>
-    {%  endfor %}
+    <div class="details">
+        <h3>Airplane: {{ flight.airplane }}</h3>
+        <h4> Tickets left: {{ tickets }} </h4>
+        <h2> {{ flight.startingAirport }} - {{ flight.landingAirport }}</h2>
+        {{ flight.startingTime }} - {{ flight.landingTime }}
+        <h2>Passengers:</h2>
+        {%  for pass in flight.passengerslist %}
+            <p>{{ pass }} {{ pass.nrOfTickets }}</p>
+        {%  endfor %}
+    </div>
 {% endblock %}
-{% block sidebar %}
+{% block filter %}
     {% if error %}
         <p>Sorry, there aren't enough places for this flight.</p>
     {%  endif %}

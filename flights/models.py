@@ -19,7 +19,6 @@ class Airport(models.Model):
         return self.name
 
 
-
 class Passenger(models.Model):
     name = models.CharField(max_length=20)
     surname = models.CharField(max_length=40)
