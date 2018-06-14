@@ -7,7 +7,7 @@
         {{ flight.startingTime }} - {{ flight.landingTime }}
         <h2>Passengers:</h2>
         {%  for pass in flight.passengerslist %}
-            <p>{{ pass }} {{ pass.nrOfTickets }}</p>
+            <p id="passenger">{{ pass }} {{ pass.nrOfTickets }}</p>
         {%  endfor %}
     </div>
 {% endblock %}
@@ -19,10 +19,10 @@
         <p>Write your name and surname correctly.</p>
     {% endif %}
     <h3>Buy ticket!</h3>
-    <form method="POST" class="post-form">{% csrf_token %}
+    <form method="POST" id="ticket" class="post-form">{% csrf_token %}
         {{ form.as_p }}
     {% if user.is_authenticated %}
-        <button type="submit" class="save btn btn-default">Save</button>
+        <button type="submit" id="buy" class="save btn btn-default">Save</button>
     {%  else %}
         <p>Log in so you can purchase your tickets.</p>
         <a href="{% url 'login' %}">login</a>

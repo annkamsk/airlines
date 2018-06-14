@@ -33,6 +33,11 @@ h1 {
      font-weight: bolder;
  }
 
+ .login-static {
+    color: #393939;
+     font-variant: none;
+ }
+
 
 .page-header {
     background-color: #393939;
@@ -96,7 +101,7 @@ tr.trLink:hover a{
     background: #393939;
     padding: 10px;
     font-family: "Bitstream Vera Sans Mono", Monaco, "Courier New", Courier, monospace;
-    color: white;
+    color: #393939;
 }
 
 

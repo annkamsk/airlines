@@ -1,5 +1,5 @@
 from django import forms
-from .models import Passenger, Flight, Airport
+from .models import Passenger, Flight, Airport, Crew
 
 
 class PassengerForm(forms.ModelForm):
@@ -22,6 +22,15 @@ class FlightForm(forms.ModelForm):
 
     class Meta:
         model = Flight
+        fields = ()
+
+
+class CrewForm(forms.ModelForm):
+    flight = forms.ModelChoiceField(queryset=Flight.objects.all())
+    captain = forms.ModelChoiceField(queryset=Crew.objects.all())
+
+    class Meta:
+        model = Crew
         fields = ()
 
 

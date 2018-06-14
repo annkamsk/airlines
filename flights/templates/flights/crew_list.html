@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Flights</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="../css/flights.css">
+
+</head>
+<body>
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="page-header">
+            <p>
+            <p style="float: left;">
+                <img src="../airplane.png" class="header-image" height="50px" width="50px" border="1px">
+            </p>
+            <h1><a href="/" class="header-title">Airanna Airlines</a></h1>
+            <form method="POST" id="login" class="login-static" style="float:right;"></form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="filter">
+            <p>
+                <label><span><input type="date" id="date" style="float:left; height: 3em;"></span></label>
+                <label><span><button type="submit" style="float:left; height: 3em;" class="save btn btn-default"
+                                     onclick="findDate()">Search</button></span></label>
+            </p>
+        </div>
+        <form method="POST" id="post-form" name="post-form">
+            <p>
+                <select id="flight" name="flight" style="float:left; height: 3em; width: 9em;"></select>
+                <select id="crew" name="crew" style="float:left; height: 3em; width:9em;"></select>
+                <button id="assign" type="submit" style="float:left; height: 3em;" class="save btn btn-default">Assign
+                </button>
+            </p>
+        </form>
+    </div>
+    <div class="row">
+        <div class="flights">
+            <table class="data" id="crews"></table>
+        </div>
+    </div>
+</div>
+</body>
+<script src="../js/crews_api.js"></script>
+<script src="../js/login.js"></script>
+
+</html>
+
